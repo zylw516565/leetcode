@@ -1,0 +1,23 @@
+{
+  "env": {
+    "myIncludePath": ["${workspaceFolder}/include", "${workspaceFolder}/src", "D:\\Program Files\\mingw64\\x86_64-w64-mingw32\\include", "D:\\Program Files\\mingw64\\include"],
+    "myDefines": ["DEBUG", "MY_FEATURE=1"]
+  },
+  "configurations": [
+    {
+      "name": "Win32",
+      "compilerPath": "D:\\Program Files\\mingw64\\bin\\g++.exe",
+      "intelliSenseMode": "windows-msvc-x64",
+      "includePath": ["${myIncludePath}"],
+      "defines": ["${myDefines}", "_WINDOWS"],
+      "cStandard": "c17",
+      "cppStandard": "c++20",
+      "windowsSdkVersion": "10.0.19041.0",
+      "browse": {
+        "path": ["${myIncludePath}", "${workspaceFolder}"]
+      }
+    }
+  ],
+  "version": 4,
+  "enableConfigurationSquiggles": true
+}
