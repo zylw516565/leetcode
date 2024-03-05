@@ -1,3 +1,8 @@
+#include <iostream>
+
+using std::cout;
+using std::endl;
+
 class MyLinkedList {
 public:
     struct ListNode {
@@ -79,6 +84,17 @@ public:
       delete tmp;
       --size_;
     }
+
+    void printLinkedList()
+    {
+      auto cur = dummyHead_;
+      while (cur->next)
+      {
+        cout << cur->next->val << " ";
+        cur = cur->next;
+      }
+      cout << endl;
+    }
 };
 
 /**
@@ -95,9 +111,20 @@ int main()
 {
   MyLinkedList linkedList;
   linkedList.addAtHead(1);
+  linkedList.printLinkedList();
+
   linkedList.addAtTail(3);
+  linkedList.printLinkedList();
+
   linkedList.addAtIndex(1,2);
+  linkedList.printLinkedList();
+
   linkedList.get(1);
+  linkedList.printLinkedList();
+
   linkedList.deleteAtIndex(1);
+  linkedList.printLinkedList();
+
   linkedList.get(1);
+  linkedList.printLinkedList();
 }
