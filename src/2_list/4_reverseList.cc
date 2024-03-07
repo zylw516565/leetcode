@@ -24,37 +24,42 @@ public:
     }
 
     ListNode* reverseList(ListNode* head) {
-      if(nullptr == head) return nullptr;
-
+      ListNode* tmp;
       ListNode* prev = nullptr;
       auto cur = head;
-      while (cur && cur->next)
-      {
-        auto tmp = cur;
-        cur = cur->next;
-        if(tmp == head) {
-          head->next = nullptr;
-        } else {
-          tmp->next = prev;
-        }
 
-        prev = tmp;
+      while (cur) {
+        tmp = cur->next;  //先保存cur下一个节点,因为下面翻转会覆盖cur->next
+        cur->next = prev; //翻转
+        prev = cur;       //把当前cur节点保存为prev,以供后续翻转
+        cur = tmp;        //cur向后移动一个节点
       }
 
-      cur->next = prev;
-      return cur;
+      return prev;
     }
 
-    void printLinkedList()
-    {
-      auto cur = dummyHead_;
-      while (cur->next)
-      {
-        cout << cur->next->val << " ";
-        cur = cur->next;
-      }
-      cout << endl;
-    }
+    //my edition
+    // ListNode* reverseList(ListNode* head) {
+    //   if(nullptr == head) return nullptr;
+
+    //   ListNode* prev = nullptr;
+    //   auto cur = head;
+    //   while (cur && cur->next)
+    //   {
+    //     auto tmp = cur;
+    //     cur = cur->next;
+    //     if(tmp == head) {
+    //       head->next = nullptr;
+    //     } else {
+    //       tmp->next = prev;
+    //     }
+
+    //     prev = tmp;
+    //   }
+
+    //   cur->next = prev;
+    //   return cur;
+    // }
 };
 
 void printLinkedList(ListNode* head)
