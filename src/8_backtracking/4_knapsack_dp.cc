@@ -23,7 +23,7 @@ public:
       }
     }
 
-    for (int i = cap; i >= 0; i++) {
+    for (int i = cap; i >= 0; --i) {
       if(states[weight.size() - 1][i] == true) return i;
     }
     
@@ -44,11 +44,44 @@ public:
       }
     }
 
-    for (int i = cap; i >= 0; i++) {
+    for (int i = cap; i >= 0; --i) {
       if(states[i] == true) return i;
     }
     
     return 0;
+  }
+
+  int knapsack_V3(vector<int>& weight, vector<int>& value, int cap)
+  {
+    vector<vector<int>> states(weight.size(), vector<int>(cap+1, -1));
+    states[0][0] = 0;
+    if(weight[0] <= cap) {
+      states[0][weight[0]] = value[0];
+    }
+
+    for (int i = 1; i < weight.size(); i++) {
+      for (int j = 0; j <= cap; j++) { //第i物品不放入
+        if(states[i-1][j] >= 0) states[i][j] = states[i-1][j];
+      }
+
+      for (int j = 0; j <= cap - weight[i]; j++) {
+        if(states[i-1][j] >= 0) { 
+           int v = states[i-1][j] + value[i];
+           if(v > states[i][j+weight[i]]) {
+            states[i][j+weight[i]] = v;
+           }
+        }
+      }
+    }
+
+    int maxValue = -1;
+    for (int i = 0; i <= cap; ++i) {
+      if(states[weight.size()-1][i] > maxValue) {
+         maxValue = states[weight.size()-1][i];
+      }
+    }
+
+    return maxValue;
   }
 };
 
@@ -62,4 +95,8 @@ int main()
 
   auto res2 = solution.knapsack_V2(weights, cap);
   std::cout << res2 << std::endl;
+
+  vector<int> value  = {3, 4, 8, 9, 6};  // 物品重量
+  auto res3 = solution.knapsack_V3(weights, value, cap);
+  std::cout << res3 << std::endl;
 }
