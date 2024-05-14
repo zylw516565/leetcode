@@ -9,7 +9,7 @@ vector<int> weight = {2, 2, 4, 6, 3};  // 物品重量
 int maxCount = 5; // 物品个数
 int maxCap = 9; // 背包承受的最大重量
 
-auto mem = vector<vector<bool>>(5, 10);
+auto mem = vector<vector<bool>>(5, vector<bool>(10, false));
 
 void backtracking(int i, int cw) { // 调用f(0, 0)
   if (cw == maxCap || i == maxCount) { // cw==w表示装满了，i==n表示物品都考察完了
