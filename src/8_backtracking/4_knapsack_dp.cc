@@ -83,6 +83,41 @@ public:
 
     return maxValue;
   }
+
+  vector<int> double11(vector<int>& goods, int cap)
+  {
+    vector<vector<bool>> states(goods.size(), vector<bool>(cap+1, false));
+    states[0][0] = 0;
+    if(goods[0] <= cap) {
+      states[0][goods[0]] = true;
+    }
+
+    for (int i = 1; i < goods.size(); i++) {
+      for (int j = 0; j <= cap; j++) { //第i物品不放入
+        if(states[i-1][j] == true) states[i][j] = states[i-1][j];
+      }
+
+      for (int j = 0; j <= cap - goods[i]; j++) {
+        if(states[i-1][j] == true) states[i][j+goods[i]] = true;
+      }
+    }
+
+    int totalPrice = 200;
+    for (; totalPrice <= cap; ++totalPrice) {
+      if(states[goods.size()-1][totalPrice] == true) break;
+    }
+
+    vector<int> result;
+    for (int i = goods.size()-1; i >= 0 && totalPrice >= 0; --i) {
+      if(states[i][totalPrice] == true) {
+        result.emplace_back(i);
+        totalPrice -= goods[i];
+      }
+    } 
+
+    return result;
+  }
+
 };
 
 int main()
