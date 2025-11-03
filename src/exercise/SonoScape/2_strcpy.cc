@@ -1,8 +1,14 @@
 #include <stdio.h>
+#include <iostream>
 
 void strcpy(char* dst, char* src)
 {
   while ((*dst++ = *src++));
+
+  // char tmp = '\0';
+  // while (tmp = (*dst++ = *src++)) {
+  //   std::cout << tmp << " " << std::endl;
+  // }
 }
 
 int main()

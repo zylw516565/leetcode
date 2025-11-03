@@ -3,7 +3,7 @@
 int main()
 {
   int a[3][3] = { 1,2,3,4,5,6,7,8,9 };
-  std::cout << "count of (a) = " << sizeof(a)/sizeof(int) << std::endl;
+  std::cout << "sizeof(a)=" << sizeof(a) << "  sizeof(int)=" << sizeof(int) <<  "  count of (a) = " << sizeof(a)/sizeof(int) << std::endl;
 
   int* b  = (int*)a;
   int* b2 = a[0];
