@@ -1,15 +1,11 @@
 package main
 
-import (
-	"fmt"
-)
-
-func main() {
-	nums := []int{6, 4, 2, 5, 3, 1}
-	fmt.Println(nums)
-	merge_sort(nums)
-	fmt.Println(nums)
-}
+// func main() {
+// 	nums := []int{6, 4, 2, 5, 3, 1}
+// 	fmt.Println(nums)
+// 	merge_sort(nums)
+// 	fmt.Println(nums)
+// }
 
 func merge_sort(nums []int) {
 	if len(nums) < 2 {

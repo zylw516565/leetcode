@@ -30,28 +30,28 @@ func (c *ByteCounter) Write(p []byte) (int, error) {
 	return len(p), nil
 }
 
-func main() {
-	var c ByteCounter
-	c.Write([]byte("hello"))
-	fmt.Println(c)
-	c = 0
+// func main() {
+// 	var c ByteCounter
+// 	c.Write([]byte("hello"))
+// 	fmt.Println(c)
+// 	c = 0
 
-	var name = "Dolly"
-	fmt.Fprintf(&c, "Hello, %s", name)
-	fmt.Println(c)
+// 	var name = "Dolly"
+// 	fmt.Fprintf(&c, "Hello, %s", name)
+// 	fmt.Println(c)
 
-	var w io.Writer
-	w = os.Stdout
-	w = new(bytes.Buffer)
-	// w = time.Second
-	w.Write([]byte("hello"))
+// 	var w io.Writer
+// 	w = os.Stdout
+// 	w = new(bytes.Buffer)
+// 	// w = time.Second
+// 	w.Write([]byte("hello"))
 
-	var rwc io.ReadWriteCloser
-	w = rwc
-	// rwc = w
+// 	var rwc io.ReadWriteCloser
+// 	w = rwc
+// 	// rwc = w
 
-	test_2()
-}
+// 	test_2()
+// }
 
 func test_2() {
 	var w io.Writer
